@@ -1,0 +1,48 @@
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Data
+# Keep processed data if it's not too large, or ignore it? Let's ignore raw data
+data/raw/
+# We'll also ignore processed to avoid bloating the repo, users can run the pipeline
+# Or actually, the README says "Run the full data pipeline (downloads WB data + computes similarity)", so data isn't tracked.
+data/processed/
+
+# Pytest
+.pytest_cache/
+.coverage
+htmlcov/
+
+# OS files
+.DS_Store
+Thumbs.db

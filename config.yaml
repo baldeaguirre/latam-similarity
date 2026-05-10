@@ -1,0 +1,619 @@
+# =============================================================================
+# config.yaml — Single source of truth for latam-similarity project
+# All country lists, weights, indicator configs, and theme tokens live here.
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# COUNTRIES
+# Canonical list used everywhere. Never hardcode elsewhere.
+# -----------------------------------------------------------------------------
+countries:
+  - name: Argentina
+    iso2: AR
+    iso3: ARG
+    wb_code: ARG
+  - name: Bolivia
+    iso2: BO
+    iso3: BOL
+    wb_code: BOL
+  - name: Brazil
+    iso2: BR
+    iso3: BRA
+    wb_code: BRA
+  - name: Chile
+    iso2: CL
+    iso3: CHL
+    wb_code: CHL
+  - name: Colombia
+    iso2: CO
+    iso3: COL
+    wb_code: COL
+  - name: Costa Rica
+    iso2: CR
+    iso3: CRI
+    wb_code: CRI
+  - name: Cuba
+    iso2: CU
+    iso3: CUB
+    wb_code: CUB
+  - name: Dominican Republic
+    iso2: DO
+    iso3: DOM
+    wb_code: DOM
+  - name: Ecuador
+    iso2: EC
+    iso3: ECU
+    wb_code: ECU
+  - name: El Salvador
+    iso2: SV
+    iso3: SLV
+    wb_code: SLV
+  - name: Guatemala
+    iso2: GT
+    iso3: GTM
+    wb_code: GTM
+  - name: Haiti
+    iso2: HT
+    iso3: HTI
+    wb_code: HTI
+  - name: Honduras
+    iso2: HN
+    iso3: HND
+    wb_code: HND
+  - name: Mexico
+    iso2: MX
+    iso3: MEX
+    wb_code: MEX
+  - name: Nicaragua
+    iso2: NI
+    iso3: NIC
+    wb_code: NIC
+  - name: Panama
+    iso2: PA
+    iso3: PAN
+    wb_code: PAN
+  - name: Paraguay
+    iso2: PY
+    iso3: PRY
+    wb_code: PRY
+  - name: Peru
+    iso2: PE
+    iso3: PER
+    wb_code: PER
+  - name: Uruguay
+    iso2: UY
+    iso3: URY
+    wb_code: URY
+  - name: Venezuela
+    iso2: VE
+    iso3: VEN
+    wb_code: VEN
+
+# -----------------------------------------------------------------------------
+# INDICATOR CATALOG
+# Each indicator has: id, name, source, wb_indicator (if WB API), category,
+# year_used, reverse_code (higher = better after reversal), structural (bool),
+# missingness_threshold (0.30 = 30%)
+# -----------------------------------------------------------------------------
+
+indicators:
+  # ---- Economy ----
+  - id: gdp_total
+    name: "GDP (current US$)"
+    source: World Bank
+    wb_indicator: "NY.GDP.MKTP.CD"
+    category: economy
+    year_used: 2022
+    reverse_code: false
+    structural: false
+    include_in_similarity: true
+
+  - id: gdp_per_capita
+    name: "GDP per capita (current US$)"
+    source: World Bank
+    wb_indicator: "NY.GDP.PCAP.CD"
+    category: economy
+    year_used: 2022
+    reverse_code: false
+    structural: false
+    include_in_similarity: true
+
+  - id: gdp_growth
+    name: "GDP growth (annual %)"
+    source: World Bank
+    wb_indicator: "NY.GDP.MKTP.KD.ZG"
+    category: economy
+    year_used: 2022
+    reverse_code: false
+    structural: false
+    include_in_similarity: true
+
+  - id: fdi_net_inflows
+    name: "FDI net inflows (% of GDP)"
+    source: World Bank
+    wb_indicator: "BX.KLT.DINV.WD.GD.ZS"
+    category: economy
+    year_used: 2022
+    reverse_code: false
+    structural: false
+    include_in_similarity: true
+
+  - id: inflation
+    name: "Inflation, consumer prices (annual %)"
+    source: World Bank
+    wb_indicator: "FP.CPI.TOTL.ZG"
+    category: economy
+    year_used: 2022
+    reverse_code: true
+    structural: false
+    include_in_similarity: true
+
+  # ---- Social Development ----
+  - id: hdi
+    name: "Human Development Index (HDI)"
+    source: UNDP
+    wb_indicator: null
+    category: social
+    year_used: 2022
+    reverse_code: false
+    structural: false
+    include_in_similarity: true
+
+  - id: life_expectancy
+    name: "Life expectancy at birth (years)"
+    source: World Bank
+    wb_indicator: "SP.DYN.LE00.IN"
+    category: social
+    year_used: 2022
+    reverse_code: false
+    structural: false
+    include_in_similarity: true
+
+  - id: poverty_rate
+    name: "Poverty headcount at national poverty line (%)"
+    source: World Bank
+    wb_indicator: "SI.POV.NAHC"
+    category: social
+    year_used: 2022
+    reverse_code: true
+    structural: false
+    include_in_similarity: true
+
+  - id: gini
+    name: "Gini index"
+    source: World Bank
+    wb_indicator: "SI.POV.GINI"
+    category: social
+    year_used: 2022
+    reverse_code: true
+    structural: false
+    include_in_similarity: true
+
+  - id: unemployment
+    name: "Unemployment rate (%)"
+    source: World Bank / ILO
+    wb_indicator: "SL.UEM.TOTL.ZS"
+    category: social
+    year_used: 2022
+    reverse_code: true
+    structural: false
+    include_in_similarity: true
+
+  # ---- Education ----
+  - id: mean_years_schooling
+    name: "Mean years of schooling"
+    source: UNDP
+    wb_indicator: null
+    category: education
+    year_used: 2022
+    reverse_code: false
+    structural: false
+    include_in_similarity: true
+
+  - id: edu_expenditure
+    name: "Government expenditure on education (% of GDP)"
+    source: UNESCO / World Bank
+    wb_indicator: "SE.XPD.TOTL.GD.ZS"
+    category: education
+    year_used: 2022
+    reverse_code: false
+    structural: false
+    include_in_similarity: true
+
+  - id: literacy_rate
+    name: "Adult literacy rate (%)"
+    source: UNESCO / World Bank
+    wb_indicator: "SE.ADT.LITR.ZS"
+    category: education
+    year_used: 2022
+    reverse_code: false
+    structural: false
+    include_in_similarity: true
+
+  # ---- Health ----
+  - id: health_expenditure
+    name: "Current health expenditure (% of GDP)"
+    source: WHO / World Bank
+    wb_indicator: "SH.XPD.CHEX.GD.ZS"
+    category: health
+    year_used: 2021
+    reverse_code: false
+    structural: false
+    include_in_similarity: true
+
+  - id: hospital_beds
+    name: "Hospital beds (per 1,000 people)"
+    source: World Bank
+    wb_indicator: "SH.MED.BEDS.ZS"
+    category: health
+    year_used: 2020
+    reverse_code: false
+    structural: false
+    include_in_similarity: true
+
+  - id: physicians
+    name: "Physicians (per 1,000 people)"
+    source: World Bank
+    wb_indicator: "SH.MED.PHYS.ZS"
+    category: health
+    year_used: 2020
+    reverse_code: false
+    structural: false
+    include_in_similarity: true
+
+  - id: infant_mortality
+    name: "Infant mortality rate (per 1,000 live births)"
+    source: World Bank
+    wb_indicator: "SP.DYN.IMRT.IN"
+    category: health
+    year_used: 2022
+    reverse_code: true
+    structural: false
+    include_in_similarity: true
+
+  # ---- Governance & Security ----
+  - id: cpi
+    name: "Corruption Perceptions Index"
+    source: Transparency International
+    wb_indicator: null
+    category: governance
+    year_used: 2023
+    reverse_code: false
+    structural: false
+    include_in_similarity: true
+
+  - id: homicide_rate
+    name: "Intentional homicide rate (per 100,000)"
+    source: UNODC
+    wb_indicator: null
+    category: governance
+    year_used: 2022
+    reverse_code: true
+    structural: false
+    include_in_similarity: true
+
+  - id: global_peace_index
+    name: "Global Peace Index"
+    source: Institute for Economics & Peace
+    wb_indicator: null
+    category: governance
+    year_used: 2023
+    reverse_code: true
+    structural: false
+    include_in_similarity: true
+
+  - id: rule_of_law
+    name: "Rule of Law Index"
+    source: World Justice Project
+    wb_indicator: null
+    category: governance
+    year_used: 2023
+    reverse_code: false
+    structural: false
+    include_in_similarity: true
+
+  # ---- Infrastructure ----
+  - id: access_electricity
+    name: "Access to electricity (% of population)"
+    source: World Bank
+    wb_indicator: "EG.ELC.ACCS.ZS"
+    category: infrastructure
+    year_used: 2022
+    reverse_code: false
+    structural: false
+    include_in_similarity: true
+
+  - id: internet_usage
+    name: "Internet users (% of population)"
+    source: World Bank / ITU
+    wb_indicator: "IT.NET.USER.ZS"
+    category: infrastructure
+    year_used: 2022
+    reverse_code: false
+    structural: false
+    include_in_similarity: true
+
+  - id: logistics_performance
+    name: "Logistics Performance Index"
+    source: World Bank
+    wb_indicator: null
+    category: infrastructure
+    year_used: 2023
+    reverse_code: false
+    structural: false
+    include_in_similarity: true
+
+  # ---- Democracy & Political Freedom ----
+  - id: democracy_index
+    name: "Democracy Index (overall)"
+    source: Economist Intelligence Unit
+    wb_indicator: null
+    category: democracy
+    year_used: 2023
+    reverse_code: false
+    structural: false
+    include_in_similarity: true
+
+  - id: freedom_house
+    name: "Freedom in the World score (Political Rights + Civil Liberties)"
+    source: Freedom House
+    wb_indicator: null
+    category: democracy
+    year_used: 2024
+    reverse_code: false
+    structural: false
+    include_in_similarity: true
+
+  - id: liberal_democracy_index
+    name: "Liberal Democracy Index (V-Dem)"
+    source: Varieties of Democracy (V-Dem)
+    wb_indicator: null
+    category: democracy
+    year_used: 2023
+    reverse_code: false
+    structural: false
+    include_in_similarity: true
+
+  - id: press_freedom_index
+    name: "Press Freedom Index (RSF)"
+    source: Reporters Without Borders
+    wb_indicator: null
+    category: democracy
+    year_used: 2024
+    reverse_code: true
+    structural: false
+    include_in_similarity: true
+
+  # ---- Productivity & Competitiveness ----
+  - id: labor_productivity
+    name: "Labor productivity (GDP per hour worked, 2017 PPP $)"
+    source: ILO / Penn World Table
+    wb_indicator: null
+    category: productivity
+    year_used: 2022
+    reverse_code: false
+    structural: false
+    include_in_similarity: true
+
+  - id: output_per_worker
+    name: "Output per worker (GDP per employed person)"
+    source: ILO
+    wb_indicator: null
+    category: productivity
+    year_used: 2022
+    reverse_code: false
+    structural: false
+    include_in_similarity: true
+
+  - id: global_innovation_index
+    name: "Global Innovation Index"
+    source: WIPO
+    wb_indicator: null
+    category: productivity
+    year_used: 2023
+    reverse_code: false
+    structural: false
+    include_in_similarity: true
+
+  - id: global_competitiveness_index
+    name: "Global Competitiveness Index"
+    source: World Economic Forum
+    wb_indicator: null
+    category: productivity
+    year_used: 2019
+    reverse_code: false
+    structural: false
+    include_in_similarity: true
+    note: "WEF discontinued annual ranking post-2019; using 2019 edition as final available."
+
+  - id: ease_of_doing_business
+    name: "Ease of Doing Business score"
+    source: World Bank
+    wb_indicator: null
+    category: productivity
+    year_used: 2020
+    reverse_code: false
+    structural: false
+    include_in_similarity: true
+    note: "World Bank discontinued Doing Business in 2021; using final 2020 edition."
+
+  # ---- Demographics ----
+  - id: population_total
+    name: "Total population"
+    source: World Bank
+    wb_indicator: "SP.POP.TOTL"
+    category: demographics
+    year_used: 2022
+    reverse_code: false
+    structural: true
+    include_in_similarity: false
+    note: "Log-scaled for structural similarity only. Not a better/worse indicator."
+
+  - id: population_growth
+    name: "Population growth rate (annual %)"
+    source: World Bank
+    wb_indicator: "SP.POP.GROW"
+    category: demographics
+    year_used: 2022
+    reverse_code: false
+    structural: true
+    include_in_similarity: false
+
+  - id: median_age
+    name: "Median age (years)"
+    source: UN World Population Prospects
+    wb_indicator: null
+    category: demographics
+    year_used: 2023
+    reverse_code: false
+    structural: true
+    include_in_similarity: false
+
+  - id: urban_population_pct
+    name: "Urban population (% of total)"
+    source: World Bank
+    wb_indicator: "SP.URB.TOTL.IN.ZS"
+    category: demographics
+    year_used: 2022
+    reverse_code: false
+    structural: true
+    include_in_similarity: false
+
+  - id: age_dependency_ratio
+    name: "Age dependency ratio (dependents per 100 working-age)"
+    source: World Bank
+    wb_indicator: "SP.POP.DPND"
+    category: demographics
+    year_used: 2022
+    reverse_code: true
+    structural: true
+    include_in_similarity: false
+
+  - id: fertility_rate
+    name: "Total fertility rate (births per woman)"
+    source: World Bank
+    wb_indicator: "SP.DYN.TFRT.IN"
+    category: demographics
+    year_used: 2022
+    reverse_code: false
+    structural: true
+    include_in_similarity: false
+
+  - id: net_migration
+    name: "Net migration (per 1,000 people)"
+    source: World Bank / UN
+    wb_indicator: "SM.POP.NETM"
+    category: demographics
+    year_used: 2022
+    reverse_code: false
+    structural: true
+    include_in_similarity: false
+
+# -----------------------------------------------------------------------------
+# CATEGORY WEIGHTS
+# 9 categories, each with equal default weight = 1/9 ≈ 0.111
+# Demographics excluded from similarity by default (structural only).
+# Sum of non-demographic weights should equal 1.0.
+# Adjust weights here; pipeline reads from this section.
+# -----------------------------------------------------------------------------
+category_weights:
+  economy: 0.125
+  social: 0.125
+  education: 0.125
+  health: 0.125
+  governance: 0.125
+  infrastructure: 0.125
+  democracy: 0.125
+  productivity: 0.125
+  demographics: 0.0  # excluded from similarity computation by default
+
+# -----------------------------------------------------------------------------
+# PREPROCESSING SETTINGS
+# -----------------------------------------------------------------------------
+preprocessing:
+  missingness_threshold: 0.30   # drop indicator if missing > 30% of countries
+  knn_impute_k: 3
+  random_state: 42
+
+# -----------------------------------------------------------------------------
+# SIMILARITY SETTINGS
+# -----------------------------------------------------------------------------
+similarity:
+  metrics:
+    - cosine
+    - euclidean
+    - pearson
+  composite_method: mean  # average of all three metrics
+  output_range: [0.0, 1.0]
+
+# -----------------------------------------------------------------------------
+# EMBEDDING SETTINGS
+# -----------------------------------------------------------------------------
+embeddings:
+  random_state: 42
+  tsne:
+    perplexity: 5
+    n_components: 2
+    n_iter: 1000
+  umap:
+    n_neighbors: 5
+    min_dist: 0.3
+    n_components: 2
+  pca:
+    n_components: 3  # 2D and 3D views from same decomposition
+
+# -----------------------------------------------------------------------------
+# DATA PATHS
+# -----------------------------------------------------------------------------
+paths:
+  raw_data: "data/raw"
+  processed_data: "data/processed"
+  features_file: "data/processed/countries_features.csv"
+  similarity_matrix: "data/processed/similarity_matrix.csv"
+  embeddings_file: "data/processed/embeddings.csv"
+
+# -----------------------------------------------------------------------------
+# THEME TOKENS (mirrors DESIGN.md — single source of truth for code)
+# -----------------------------------------------------------------------------
+theme:
+  color_canvas: "#0D1117"
+  color_surface: "#161B22"
+  color_surface_raised: "#1C2330"
+  color_border: "#30363D"
+  color_border_subtle: "#21262D"
+  color_text_primary: "#E6EDF3"
+  color_text_secondary: "#8B949E"
+  color_text_muted: "#484F58"
+  color_accent: "#F59E0B"
+  color_accent_dim: "#78350F"
+  color_accent_hover: "#FBBF24"
+  color_success: "#22C55E"
+  color_success_dim: "#14532D"
+  color_danger: "#EF4444"
+  color_danger_dim: "#7F1D1D"
+  color_info: "#3B82F6"
+  color_info_dim: "#1E3A5F"
+  font_heading: "Inter"
+  font_body: "Inter"
+  font_mono: "JetBrains Mono"
+  categorical_palette:
+    AR: "#E69F00"
+    BO: "#56B4E9"
+    BR: "#009E73"
+    CL: "#F0E442"
+    CO: "#0072B2"
+    CR: "#D55E00"
+    CU: "#CC79A7"
+    DO: "#7FBC41"
+    EC: "#FDB863"
+    SV: "#AE017E"
+    GT: "#67A9CF"
+    HT: "#EF8A62"
+    HN: "#998EC3"
+    MX: "#01665E"
+    NI: "#C7E9B4"
+    PA: "#F1A340"
+    PY: "#762A83"
+    PE: "#1B7837"
+    UY: "#74ADD1"
+    VE: "#D73027"
