@@ -93,6 +93,7 @@ Demographics (7 indicators) are held out as structural overlays — not included
 ## Key Findings
 - **Highest similarity:** Uruguay ↔ Costa Rica (0.889), Uruguay ↔ Chile (0.883)
 - **Lowest similarity:** Venezuela ↔ Uruguay (0.401), Haiti ↔ Uruguay (0.449)
+- **Mexico's profile:** Clusters most closely with Brazil (0.736) and Peru (0.705) as part of the "Middle-Income Reformers"; diverges most from Cuba (0.493) and Nicaragua (0.500)
 - **PCA:** PC1 explains 47.6% of variance (development axis), PC2 explains 17.6% (democracy vs. governance axis)
 - **Stable clusters:** High-development democracies (Uruguay/Chile/Costa Rica/Panama) and Northern Triangle (Honduras/Guatemala/El Salvador) are robust to ±20% weight perturbation
 
