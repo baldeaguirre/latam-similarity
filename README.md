@@ -6,6 +6,10 @@
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.35-red)
 ![Plotly](https://img.shields.io/badge/Plotly-5.22-purple)
 
+## Project Demo
+
+![Dashboard Demo](assets/demo_full.png)
+
 ## Quick Start
 
 ```bash
