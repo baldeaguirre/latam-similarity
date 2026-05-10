@@ -113,13 +113,13 @@ Deuteranopia/protanopia verification: each pair of adjacent colors was checked t
 ## 3. Typography Rules
 
 **Fonts (Google Fonts):**
-- **Heading:** `Inter` (700, 600) — geometric, legible at all sizes
-- **Body / UI:** `Inter` (400, 500) — same family, unified system
+- **Heading:** `Roboto` (700, 600) — humanist, clean at all sizes; familiar Material Design feel
+- **Body / UI:** `Roboto` (400, 500) — same family, unified system
 - **Monospace / data:** `JetBrains Mono` (400, 500) — for numbers, codes, tooltips, CSV values
 
 **Import:**
 ```
-https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap
+https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap
 ```
 
 **Type Scale:**

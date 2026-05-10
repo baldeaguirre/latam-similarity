@@ -51,10 +51,10 @@ st.set_page_config(
 st.markdown(
     f"""
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
     html, body, [class*="css"] {{
-        font-family: 'Inter', system-ui, sans-serif !important;
+        font-family: 'Roboto', system-ui, sans-serif !important;
         background-color: {THEME["color_canvas"]};
         color: {THEME["color_text_primary"]};
     }}

@@ -593,8 +593,8 @@ theme:
   color_danger_dim: "#7F1D1D"
   color_info: "#3B82F6"
   color_info_dim: "#1E3A5F"
-  font_heading: "Inter"
-  font_body: "Inter"
+  font_heading: "Roboto"
+  font_body: "Roboto"
   font_mono: "JetBrains Mono"
   categorical_palette:
     AR: "#E69F00"
